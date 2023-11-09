@@ -2,6 +2,7 @@ package com.example.quizz_down;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,13 +13,8 @@ import java.io.Console;
 
 public class MainActivity extends AppCompatActivity  {
 
-    Button btn_choice_1,btn_choice_2,btn_next ;
-    TextView tv_question;
-    private Question question = new Question();
-
-    // le flags commence à 1 et non 0 pour éviter que la question 1 s'afffiche encore quand on appuie sur next
-    int flags = 1;
-
+  TextView tv_login, tv_password;
+  Button btn_connexion;
 
 
     @Override
@@ -26,27 +22,19 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        tv_login = findViewById(R.id.tv_login);
+        tv_password = findViewById(R.id.tv_password);
+        btn_connexion = findViewById(R.id.btn_connexion);
 
-        btn_choice_1 = findViewById(R.id.btn_choice_1);
-        btn_choice_2 = findViewById(R.id.btn_choice_2);
-        btn_next = findViewById(R.id.btn_next);
-        tv_question = findViewById(R.id.tv_question);
-
-        // on met -1 pour que lorsque l'application se lance c'est la première question qui s'affiche et non la 2e
-        tv_question.setText(question.questions[flags-1]);
-        btn_choice_1.setText(question.getchoice1(flags-1));
-        btn_choice_2.setText(question.getchoice2(flags-1));
-
-        btn_next.setOnClickListener(new View.OnClickListener(){
-
+        btn_connexion.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View view) {
-
-                tv_question.setText(question.questions[flags]);
-                btn_choice_1.setText(question.getchoice1(flags));
-                btn_choice_2.setText(question.getchoice2(flags));
+            public void onClick(View v) {
+                Intent in = new Intent(getApplicationContext(),QuestionActivity.class);
+                startActivity(in);
             }
         });
+
+
 
     }
 
