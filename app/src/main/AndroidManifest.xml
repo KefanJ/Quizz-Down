@@ -1,6 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Permission d'accès à internet pour les requêtes de l'API -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,22 +12,45 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.QuizzDown"
+        android:theme="@style/Theme.QuizApp"
         tools:targetApi="31">
+
         <activity
-            android:name=".QuestionActivity"
+            android:name=".ResulteActivity"
             android:exported="false" />
+
         <activity
-            android:name=".ResultActivity"
+            android:name=".settingActivity"
             android:exported="false" />
+
+        <!-- Supprimez l'intent-filter pour themeActivity -->
         <activity
-            android:name=".MainActivity"
+            android:name=".themeActivity"
+            android:exported="false">
+        </activity>
+
+        <activity
+            android:name=".playActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".themechoiceActivity"
+            android:exported="false" />
+
+        <!-- Définissez l'activité de connexion comme l'activité de démarrage -->
+        <activity
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <!-- Ne déclarez pas l'activité MainActivity comme exportée -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false">
         </activity>
     </application>
 
